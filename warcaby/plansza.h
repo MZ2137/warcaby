@@ -1,9 +1,14 @@
 #pragma once
-class plansza
+
+
+class board
 {
-	int p[8][8];
+	
+public:
+	board();
+	~board();
 
-
-
+	void print();
+	void move(int, int, int, int);
 };
 
