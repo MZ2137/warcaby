@@ -15,7 +15,7 @@
 const int BOARD_SIZE = 8;
 
 
-//klasa pionka
+//klasa pionka,  bedzie wiele pojec ogolnych ulatwiajacych dziedziczenie klasowe
 class Piece {
 public:
 	//ciekawy typ zmiennej ciezki do wytlumaczenia, lista slow z przypisanymi indeksami
@@ -26,11 +26,25 @@ public:
 	//abstrakcyjny destruktor
 	virtual ~Piece(){}
 
-
+	//metody stale
 	Color getColor() const;
 	char getSymbol() const;
 	bool isKing() const;
 
+	//wirtualna metoda o domyslnej wartosci 0
+	virtual bool canMove(int fromX, int fromY, int toX, int toY) const = 0;
+
+protected:
+	Color mColor;
+	bool mIsKing;
+};
+
+//nowa klasa "pionek" dziedziczaca po "piece", posiada typ dziedziczenia public bo nie widze potrzeby zmieniania prywatnosci elementow z "Piece"
+class Pawn : public Piece {
+public:
+	Pawn(Color color);
+
+	bool canMove(int fromX, int fromY, int toX, int toY) const override;
 };
 
 #endif
