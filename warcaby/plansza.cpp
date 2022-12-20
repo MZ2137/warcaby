@@ -36,8 +36,3 @@ bool Pawn::canMove(int fromX, int fromY, int toX, int toY) const {
 	} 
 }
 
-//klasa planszy
-class Board {
-
-
-};
